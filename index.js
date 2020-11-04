@@ -63,10 +63,10 @@ const pes = {
    Haha, vot ge on:
 */
 const pochtalion = {
-   ...papa
+   ...papa,
+   name: 'Pochtalion Pechkin',
+   saying: 'Я почему вредный был? Потому что у меня велосипеда не было!'
 }
-pochtalion.name = "Pochtalion Pechkin"
-pochtalion.saying = "Я почему вредный был? Потому что у меня велосипеда не было!"
 
 // Lets define some friends:
 boi.friends = [mama, papa, kot, pes]
@@ -75,8 +75,6 @@ papa.friends = [boi, mama]
 kot.friends = [boi, pes]
 pes.friends = [boi, kot]
 // No friends for Pechking, only bycicle.
-
-
 
 // ======== OUTPUT ========
 /* Use print(message) for output.
@@ -87,7 +85,7 @@ pes.friends = [boi, kot]
    so code reviewers might focus on a single file that is index.js.
    */
 
-prostokvashino = [boi, mama, papa, kot, pes, pochtalion]
+const prostokvashino = [boi, mama, papa, kot, pes, pochtalion]
 
 const prettyOutput = ({
    species,
@@ -97,10 +95,8 @@ const prettyOutput = ({
    hands,
    saying,
    friends
-}) => {
-   return `Hello there :wave: My species is ${species}, my name is ${name} and I'm ${gender} with ${legs} legs and ${hands} hands. 
+}) => `Hello there :wave: My species is ${species}, my name is ${name} and I'm ${gender} with ${legs} legs and ${hands} hands. 
       My favourite quote: ${saying} for my Best friends: ${friends.map(friend => friend.name).join(', ')}`;
-}
 
 prostokvashino.forEach(person => print(prettyOutput(person)));
 /* Print examples:
@@ -111,4 +107,4 @@ prostokvashino.forEach(person => print(prettyOutput(person)));
    print('human; John; male; 2; 2; Hello world!; Rex, Tom, Jenny');
    print('human; <strong>John</strong>; male; 2; 2; <em>Hello world!</em>; Rex, Tom, Jenny');
    print('human; <strong>John</strong>; male; 2; 2; <em>Hello world!</em>; Rex, Tom, Jenny', 'div');
-   */
+*/
