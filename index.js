@@ -1,31 +1,29 @@
-/* Refer to https://github.com/OleksiyRudenko/a-tiny-JS-world for the task details
-   Complete the below for code reviewers' convenience:
+function Inhabitant(species, name, gender, legs, hands, saying) {
+   this.species = species;
+   this.name = name;
+   this.gender = gender;
+   this.legs = legs;
+   this.hands = hands;
+   this.saying = saying;
+};
 
-   Code repository: _put repo URL here_
-   Web app: _put project's github pages URL here_
-   */
+Inhabitant.prototype.addFriends = function (...friends) {
+   this.friends = friends;
+}
 
-// ======== OBJECTS DEFINITIONS ========
-// Define your objects here
+Inhabitant.prototype.createOutput = function () {
+   return `Hello there :wave: My species is ${this.species}, my name is ${this.name} and I'm ${this.gender} with ${this.legs} legs and ${this.hands} hands. 
+      My favourite quote: ${this.saying} for my Best friends: ${this.friends[0].map(friend => friend.name).join(', ')}`;
+}
 
-
-// ======== OUTPUT ========
-/* Use print(message) for output.
-   Default tag for message is <pre>. Use print(message,'div') to change containing element tag.
-
-   Message can contain HTML markup. You may also tweak index.html and/or styles.css.
-   However, please, REFRAIN from improving visuals at least until your code is reviewed
-   so code reviewers might focus on a single file that is index.js.
-   */
-
-/* Print examples:
-   print('ABC');
-   print('<strong>ABC</strong>');
-   print('<strong>ABC</strong>', 'div');
-
-   print('human; John; male; 2; 2; Hello world!; Rex, Tom, Jenny');
-   print('human; <strong>John</strong>; male; 2; 2; <em>Hello world!</em>; Rex, Tom, Jenny');
-   print('human; <strong>John</strong>; male; 2; 2; <em>Hello world!</em>; Rex, Tom, Jenny', 'div');
-   */
-
-
+const boi = new Inhabitant('human', 'Dadia Fedor', 'male', 2, 2, 'Я ничей. Я сам по себе мальчик. Свой собственный.');
+const mama = new Inhabitant('human', 'Rimma', 'female', 2, 2, 'Это не техника дошла, а я сама сюда дошла, на лыжах!');
+const papa = new Inhabitant('human', 'Dmitriy', 'male', 2, 2, 'Здравствуйте! Угадайте, кто я?');
+const pes = new Inhabitant('dog', 'Sharik', 'male', 4, 0, 'Попрошу внимания! Сделайте, пожалуйста, умные лица!');
+const kot = new Inhabitant('cat', 'Matroskin', 'male', 4, 0, 'Не правильно ты, дядя Фёдор, бутерброд ешь...');
+boi.addFriends([mama, papa, kot, pes]);
+mama.addFriends([boi, papa]);
+papa.addFriends([boi, mama]);
+pes.addFriends([boi, kot]);
+kot.addFriends([boi, pes]);
+[boi, mama, papa, pes, kot].forEach(person => print(person.createOutput()));
